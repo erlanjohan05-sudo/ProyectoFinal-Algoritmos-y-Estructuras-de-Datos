@@ -18,4 +18,13 @@ public class ArregloProductos {
     public Producto obtener(int i){
         return lista.get(i);
     }
+    public Producto buscarPorId(int idBusqueda){
+        for (int i = 0; i < lista.size(); i++){
+            Producto p = lista.get(i);
+            if (p.getId() == idBusqueda){
+            return p;
+        }
+    }
+    return null;
+}
 }
