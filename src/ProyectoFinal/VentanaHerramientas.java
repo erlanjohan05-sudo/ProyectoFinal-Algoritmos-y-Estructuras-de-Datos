@@ -28,7 +28,7 @@ public class VentanaHerramientas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnCargarDatos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -37,7 +37,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         txtMarca = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtStock = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +56,8 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Cargar Datos");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnCargarDatos.setText("Cargar Datos");
+        btnCargarDatos.addActionListener(this::btnCargarDatosActionPerformed);
 
         jLabel1.setText("Nombre");
 
@@ -73,8 +75,14 @@ public class VentanaHerramientas extends javax.swing.JFrame {
 
         txtStock.addActionListener(this::txtStockActionPerformed);
 
-        jButton2.setText("Registrar");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(this::btnRegistrarActionPerformed);
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,27 +90,29 @@ public class VentanaHerramientas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(jButton2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(12, 12, 12)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnRegistrar)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCargarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,19 +120,13 @@ public class VentanaHerramientas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,28 +136,59 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnRegistrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnCargarDatos)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(btnBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (inventario.tamaño() == 0) {
-            inventario.agregar(new Producto(1, "Martillo", "Stanley", 25.50, 10));
-            inventario.agregar(new Producto(2, "Alicate", "Tramontina", 15.00, 5));
-            inventario.agregar(new Producto(3, "Destornillador", "Truper", 8.20, 20));
-        }
-
+    private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
+       if (inventario.tamaño() == 0){
+           inventario.agregar(new Producto(1, "Martillo", "Stanley", 25.50, 10));
+           inventario.agregar(new Producto(2, "Alicate", "Tramotnina", 15.00, 5));
+           inventario.agregar(new Producto(3, "Destornillador", "Truper", 8.20, 20));
+       }
+       mostrarProductos();
+    }//GEN-LAST:event_btnCargarDatosActionPerformed
+    
+    private void mostrarProductos(){
+        modelo.setRowCount(0);
+        
         for (int i = 0; i < inventario.tamaño(); i++) {
             Producto p = inventario.obtener(i);
-            Object[] fila = {p.getId(), p.getNombre(), p.getMarca(), p.getPrecio(), p.getStock()};
+            
+            Object[] fila = {
+                p.getId(),
+                p.getNombre(),
+                p.getMarca(),
+                p.getPrecio(),
+                p.getStock(),
+            };
+            
             modelo.addRow(fila);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }   
+    
+   private void limpiarCampos(){
+       txtNombre.setText("");
+       txtMarca.setText("");
+       txtPrecio.setText("");
+       txtStock.setText("");
+       txtNombre.requestFocus();
+   }
+    
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -170,30 +205,158 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    try {
-    String nombre = txtNombre.getText();
-    String marca = txtMarca.getText();
-    double precio = Double.parseDouble(txtPrecio.getText());
-    int stock = Integer.parseInt(txtStock.getText());
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    try{
+    String nombre = txtNombre.getText().trim();
+    String marca = txtMarca.getText().trim();
     
-    int nuevoId = inventario.tamaño() + 1;
+    if (nombre.isEmpty() || marca.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Completa el nombre y la marca del producto.");
+        return;
+    }
+    
+    if (txtPrecio.getText().trim().isEmpty() || txtStock.getText().trim().isEmpty()){
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Completa el precio y el sstock del producto.");
+        return;
+    }
+    
+    double precio = Double.parseDouble(txtPrecio.getText().trim());
+    int stock = Integer.parseInt(txtStock.getText().trim());
+    
+    if (precio <= 0){
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El precio debe ser mayot a 0.");
+        return;
+    }
+    
+    if (stock < 0){
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El stock no puede ser negativo");
+        
+        return;
+    }
+    
+    int nuevoId = inventario.generarNuevoId();
     
     Producto nuevo = new Producto(nuevoId, nombre, marca, precio, stock);
     inventario.agregar(nuevo);
-    Object[] fila = {
-    nuevoId, nombre, marca, precio, stock};
-    modelo .addRow(fila);
-    txtNombre.setText("");
-    txtMarca.setText("");
-    txtPrecio.setText("");
-    txtStock.setText("");
+    mostrarProductos();
+    limpiarCampos();
     
-    javax.swing.JOptionPane.showMessageDialog(this, "¡Producto registrado con exito!");
+    javax.swing.JOptionPane.showMessageDialog(this, 
+                 "¡Producto registrado con exito!");
     
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
     catch (NumberFormatException e){
-        javax.swing.JOptionPane.showMessageDialog(this, "Error: Por favor introduce números validos en Precio y Stock.", "Error de formato", javax.swing.JOptionPane.ERROR_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, 
+                "Error: ingresa números validos en Precio y Stock.", 
+                "Error de formato", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+    }
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       String dato = javax.swing.JOptionPane.showInputDialog(this,
+               "Ingrese el ID del producto a buscar:");
+       
+       if (dato == null) {
+           return;
+       }
+       
+       if (dato.trim().isEmpty()) {
+           javax.swing.JOptionPane.showMessageDialog(this,
+                   "Debe ingresar un ID");
+           return;
+       }
+       
+       try {
+           int idBusqueda = Integer.parseInt(dato.trim());
+           
+           Producto p = inventario.buscarPorId(idBusqueda);
+           
+           if (p != null) {
+               modelo.setRowCount(0);
+               
+               Object[] fila = {
+                   p.getId(),
+                   p.getNombre(),
+                   p.getMarca(),
+                   p.getPrecio(),
+                   p.getStock(),
+               };
+               
+               modelo.addRow(fila);
+               
+               txtNombre.setText(p.getNombre());
+               txtMarca.setText(p.getMarca());
+               txtPrecio.setText(String.valueOf(p.getPrecio()));
+               txtStock.setText(String.valueOf(p.getStock()));
+               
+               javax.swing.JOptionPane.showMessageDialog(this,
+                       "Producto encontrado.");
+           }else{
+               javax.swing.JOptionPane.showMessageDialog(this,
+                       "No existe un producto con ese ID.");
+           }
+           
+    }//GEN-LAST:event_btnBuscarActionPerformed
+        catch (NumberFormatException e){
+        javax.swing.JOptionPane.showMessageDialog(this, 
+                "EL Id debe ser un número entero", 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+    } 
+       } 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       String dato = javax.swing.JOptionPane.showInputDialog(this,
+               "Ingrese el ID del proudcto:");
+       
+       if (dato == null) {
+           return;
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    if (dato.trim().isEmpty()){
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Debe ingresar un ID:");
+        return;
+    }
+    
+    try{
+        int idEliminar = Integer.parseInt(dato.trim());
+        
+        Producto p = inventario.buscarPorId(idEliminar);
+        
+        if (p == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No existe un producto con ese ID.");
+            return;
+        }
+        
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Está seguro que desea eliminar el producto?\n\n"
+                + "ID: " + p.getId() + "\n"
+                + "Nombre: " + p.getNombre() + "\n"
+                + "Marca: " + p.getMarca(),
+                "Confirmar eliminación",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == javax.swing.JOptionPane.YES_OPTION){
+            boolean eliminado = inventario.eliminarPodId(idEliminar);
+            if (eliminado) {
+                mostrarProductos();
+                limpiarCampos();
+                
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Producto eliminado correctamente");
+            }
+        }
+                
+    }
+       catch (NumberFormatException e){
+        javax.swing.JOptionPane.showMessageDialog(this, 
+                "EL Id debe ser un número entero", 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
     }
     }
     /**
@@ -205,8 +368,10 @@ public class VentanaHerramientas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCargarDatos;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
