@@ -41,6 +41,8 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        btnOrdenarPrecio = new javax.swing.JButton();
+        btnOrdenarStock = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +90,12 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(this::btnActualizarActionPerformed);
 
+        btnOrdenarPrecio.setText("Ordenar Precio");
+        btnOrdenarPrecio.addActionListener(this::btnOrdenarPrecioActionPerformed);
+
+        btnOrdenarStock.setText("Ordenar Stock");
+        btnOrdenarStock.addActionListener(this::btnOrdenarStockActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,7 +125,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                     .addComponent(btnCargarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrdenarPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrdenarStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,7 +164,11 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnActualizar)))
+                        .addComponent(btnActualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnOrdenarPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOrdenarStock)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -432,6 +446,22 @@ if (dato.trim().isEmpty()){
     }
         
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnOrdenarPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarPrecioActionPerformed
+        inventario.ordenarPorPrecio();
+        mostrarProductos();
+        
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Productos odenador por precio correctamente");
+    }//GEN-LAST:event_btnOrdenarPrecioActionPerformed
+
+    private void btnOrdenarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarStockActionPerformed
+        inventario.ordenarPorStock();
+        mostrarProductos();
+        
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Productos ordenados por stock correctamente");
+    }//GEN-LAST:event_btnOrdenarStockActionPerformed
     
     
     /**
@@ -447,6 +477,8 @@ if (dato.trim().isEmpty()){
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnOrdenarPrecio;
+    private javax.swing.JButton btnOrdenarStock;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

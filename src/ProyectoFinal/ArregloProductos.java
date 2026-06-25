@@ -61,4 +61,26 @@ public class ArregloProductos {
         }
         return false;
     }
+    public void ordenarPorPrecio() {
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for(int j = 0; j < lista.size() - 1 - i; j++) {
+                if (lista.get(j).getPrecio() > lista.get(j + 1).getPrecio()){
+                    Producto aux = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1,aux);
+                }
+            }
+        }
+    }
+    public void ordenarPorStock() {
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for(int j = 0; j < lista.size() - 1 - i; j++) {
+                if (lista.get(j).getStock() > lista.get(j + 1).getStock()){
+                    Producto aux = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1,aux);
+                }
+            }
+        }
+    }
 }
