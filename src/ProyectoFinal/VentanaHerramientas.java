@@ -40,6 +40,7 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +85,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(this::btnActualizarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +116,8 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCargarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,7 +152,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar)))
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -315,7 +322,7 @@ public class VentanaHerramientas extends javax.swing.JFrame {
        if (dato == null) {
            return;
     }//GEN-LAST:event_btnEliminarActionPerformed
-    if (dato.trim().isEmpty()){
+if (dato.trim().isEmpty()){
         javax.swing.JOptionPane.showMessageDialog(this,
                 "Debe ingresar un ID:");
         return;
@@ -358,7 +365,75 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                 "Error", 
                 javax.swing.JOptionPane.ERROR_MESSAGE);
     }
+    } 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        String dato = javax.swing.JOptionPane.showInputDialog(this,
+                "Ingrese el ID del producto a actualizar.");
+        
+        if (dato == null) {
+            return;
+        }
+        
+        if (dato.trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Debe ingresar un ID.");
+            return;
+        }
+        try {
+            int idActualizar = Integer.parseInt(dato.trim());
+            
+            Producto p = inventario.buscarPorId(idActualizar);
+            
+            if (p == null) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "No existe un producto con ese ID.");
+                return;
+            }
+            
+            String nombre = txtNombre.getText().trim();
+            String marca = txtMarca.getText().trim();
+            
+            if (nombre.isEmpty() || marca.isEmpty()){
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Completa el nombre y la marca del producto");
+                return;
+            }
+            
+            double precio = Double.parseDouble(txtPrecio.getText().trim());
+            int stock = Integer.parseInt(txtStock.getText().trim());
+            
+            if (precio <=0) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "El precio debe ser mayor a 0.");
+                return;
+            }
+            
+            if (stock < 0) {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "El stock no puede ser negativo.");
+                return;
+            }
+            
+            boolean actualizado = inventario.actualizarProducto(idActualizar, nombre, marca, precio, stock);
+            
+            if (actualizado) {
+                mostrarProductos();
+                limpiarCampos();
+                
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Producto actualizado correctamente.");
+            }
+        }
+        catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El ID, precio y stock deben ser valores numéricos válidos.",
+                "Eror",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
     }
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -368,6 +443,7 @@ public class VentanaHerramientas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCargarDatos;
     private javax.swing.JButton btnEliminar;

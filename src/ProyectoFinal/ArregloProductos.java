@@ -49,4 +49,16 @@ public class ArregloProductos {
         }
         return false;
     }
+    public boolean actualizarProducto(int idBusqueda, String nombre, String marca, double precio,int stock) {
+        Producto p = buscarPorId(idBusqueda);
+        
+        if (p != null) {
+            p.setNombre(nombre);
+            p.setMarca(marca);
+            p.setPrecio(precio);
+            p.setStock(stock);
+            return true;
+        }
+        return false;
+    }
 }

@@ -54,6 +54,7 @@
                   <Component id="btnCargarDatos" max="32767" attributes="0"/>
                   <Component id="btnBuscar" max="32767" attributes="0"/>
                   <Component id="btnEliminar" max="32767" attributes="0"/>
+                  <Component id="btnActualizar" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -94,6 +95,8 @@
                       <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -193,6 +196,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnActualizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Actualizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
