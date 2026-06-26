@@ -4,7 +4,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaClientes extends javax.swing.JFrame {
     
-    ArregloClientes clientes = new ArregloClientes();
+    ArregloClientes clientes = DatosSistema.clientes;
     DefaultTableModel modeloClientes;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaClientes.class.getName());

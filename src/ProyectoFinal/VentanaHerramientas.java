@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaHerramientas extends javax.swing.JFrame {
-    ArregloProductos inventario = new ArregloProductos();
+    ArregloProductos inventario = DatosSistema.inventario;
     DefaultTableModel modelo;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaHerramientas.class.getName());
 
