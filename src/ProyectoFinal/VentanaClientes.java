@@ -15,6 +15,9 @@ public class VentanaClientes extends javax.swing.JFrame {
     public VentanaClientes() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        
         String[] columnas ={"DNi", "Nombres", "Apellidos", "Teléfono", "Dirección"};
         modeloClientes = new DefaultTableModel(null, columnas);
         JTableClientes.setModel(modeloClientes);
