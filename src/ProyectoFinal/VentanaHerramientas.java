@@ -1,5 +1,7 @@
 
 package ProyectoFinal;
+
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaHerramientas extends javax.swing.JFrame {
@@ -43,6 +45,7 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnOrdenarPrecio = new javax.swing.JButton();
         btnOrdenarStock = new javax.swing.JButton();
+        btnStockBajo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +99,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
         btnOrdenarStock.setText("Ordenar Stock");
         btnOrdenarStock.addActionListener(this::btnOrdenarStockActionPerformed);
 
+        btnStockBajo.setText("Stock Bajo");
+        btnStockBajo.addActionListener(this::btnStockBajoActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +133,8 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOrdenarPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnOrdenarStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnOrdenarStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStockBajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -168,7 +175,9 @@ public class VentanaHerramientas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnOrdenarPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnOrdenarStock)))
+                        .addComponent(btnOrdenarStock)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnStockBajo)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -462,6 +471,38 @@ if (dato.trim().isEmpty()){
         javax.swing.JOptionPane.showMessageDialog(this,
                 "Productos ordenados por stock correctamente");
     }//GEN-LAST:event_btnOrdenarStockActionPerformed
+
+    private void btnStockBajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockBajoActionPerformed
+        int limite = 5;
+        
+        ArrayList<Producto> productosBajos = inventario.obtenerProductosStockBajo(limite);
+        
+        modelo.setRowCount(0);
+        
+        if (productosBajos.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No hay productos con stock bajo");
+            mostrarProductos();
+            return;
+        }
+        
+        for (int i = 0; i < productosBajos.size(); i++) {
+            Producto p = productosBajos.get(i);
+            
+            Object[] fila = {
+                p.getId(),
+                p.getNombre(),
+                p.getMarca(),
+                p.getPrecio(),
+                p.getStock()
+            };
+            
+            modelo.addRow(fila);
+        }
+        
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Se muestran productos con stock menor o igual a " + limite + ".");
+    }//GEN-LAST:event_btnStockBajoActionPerformed
     
     
     /**
@@ -480,6 +521,7 @@ if (dato.trim().isEmpty()){
     private javax.swing.JButton btnOrdenarPrecio;
     private javax.swing.JButton btnOrdenarStock;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnStockBajo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

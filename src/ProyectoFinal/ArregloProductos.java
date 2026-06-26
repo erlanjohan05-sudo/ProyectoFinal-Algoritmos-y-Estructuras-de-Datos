@@ -83,4 +83,16 @@ public class ArregloProductos {
             }
         }
     }
+    public ArrayList<Producto> obtenerProductosStockBajo(int limite) {
+        ArrayList<Producto> resultado = new ArrayList<>();
+        
+        for (int i = 0; i < lista.size(); i++) {
+            Producto p = lista.get(i);
+            
+            if (p.getStock() <= limite) {
+                resultado.add(p);
+            }
+        }
+        return resultado;
+    }
 }

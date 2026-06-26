@@ -57,6 +57,7 @@
                   <Component id="btnActualizar" max="32767" attributes="0"/>
                   <Component id="btnOrdenarPrecio" max="32767" attributes="0"/>
                   <Component id="btnOrdenarStock" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnStockBajo" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -103,6 +104,8 @@
                       <Component id="btnOrdenarPrecio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnOrdenarStock" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnStockBajo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -226,6 +229,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenarStockActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStockBajo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stock Bajo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStockBajoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
