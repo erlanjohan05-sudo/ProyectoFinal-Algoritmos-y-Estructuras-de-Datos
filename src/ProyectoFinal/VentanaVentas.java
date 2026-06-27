@@ -7,6 +7,7 @@ public class VentanaVentas extends javax.swing.JFrame {
     ArregloProductos inventario = DatosSistema.inventario;
     ArregloClientes clientes = DatosSistema.clientes;
     ArregloVentas ventas = DatosSistema.ventas;
+    PïlaHistorial historial = DatosSistema.historial;
     
     DefaultTableModel modeloDetalle;
     
@@ -395,9 +396,13 @@ public class VentanaVentas extends javax.swing.JFrame {
         
         ventas.agregar(ventaActual);
         
+        historial.push("Venta realizada - ID: " + ventaActual.getIdVenta()
+                        + " - Cliente: " + clienteSeleccionado.getNombres() + " " + clienteSeleccionado.getApellidos()
+                        + " - Total: S/ " + ventaActual.getTotal());
+        
         javax.swing.JOptionPane.showMessageDialog(this,
                 "Venta finalizada correctamente.\n"
-                + "Total vendido: S/ " + ventaActual.getClass());
+                + "Total vendido: S/ " + ventaActual.getTotal());
 
          nuevaVenta();
     }//GEN-LAST:event_btnFinalizarVentaActionPerformed
