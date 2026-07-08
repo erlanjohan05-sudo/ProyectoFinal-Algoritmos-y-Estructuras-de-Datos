@@ -201,7 +201,7 @@ public class VentanaClientes extends javax.swing.JFrame {
            return;
        }
        
-       if (clientes.existenDni(dni)) {
+       if (clientes.existeDni(dni)) {
            javax.swing.JOptionPane.showMessageDialog(this,
                    "Ya existe un cliente registrado con ese DNI");
            return;

@@ -1,36 +1,53 @@
 package ProyectoFinal;
 
-import java.util.ArrayList;
-
 public class ArregloVentas {
     
-    private ArrayList<Venta> lista;
-    
-    public ArregloVentas(){
-        lista = new ArrayList<>();
+    private Venta[] lista;
+    private int contador;
+
+    public ArregloVentas() {
+        lista = new Venta[50];
+        contador = 0;
     }
-    
+
     public void agregar(Venta v) {
-        lista.add(v);
+        if (contador == lista.length) {
+            aumentarCapacidad();
+        }
+
+        lista[contador] = v;
+        contador++;
     }
-    
+
+    private void aumentarCapacidad() {
+        Venta[] nuevaLista = new Venta[lista.length * 2];
+
+        for (int i = 0; i < lista.length; i++) {
+            nuevaLista[i] = lista[i];
+        }
+
+        lista = nuevaLista;
+    }
+
     public int tamaño() {
-        return lista.size();
+        return contador;
     }
+
     public Venta obtener(int i) {
-        return lista.get(i);
+        return lista[i];
     }
+
     public int generarNuevoId() {
-        return lista.size() + 1;
+        return contador + 1;
     }
+
     public double calcularTotalVendido() {
         double total = 0;
-        
-        for (int i =0; i < lista.size(); i++) {
-            total += lista.get(i).getTotal();
+
+        for (int i = 0; i < contador; i++) {
+            total += lista[i].getTotal();
         }
-        
+
         return total;
     }
-    
 }

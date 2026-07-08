@@ -1,7 +1,6 @@
 
 package ProyectoFinal;
 
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaHerramientas extends javax.swing.JFrame {
@@ -369,7 +368,7 @@ if (dato.trim().isEmpty()){
                 javax.swing.JOptionPane.YES_NO_OPTION);
         
         if (confirmacion == javax.swing.JOptionPane.YES_OPTION){
-            boolean eliminado = inventario.eliminarPodId(idEliminar);
+            boolean eliminado = inventario.eliminarPorId(idEliminar);
             if (eliminado) {
                 mostrarProductos();
                 limpiarCampos();
@@ -472,34 +471,34 @@ if (dato.trim().isEmpty()){
 
     private void btnStockBajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockBajoActionPerformed
         int limite = 5;
-        
-        ArrayList<Producto> productosBajos = inventario.obtenerProductosStockBajo(limite);
-        
-        modelo.setRowCount(0);
-        
-        if (productosBajos.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "No hay productos con stock bajo");
-            mostrarProductos();
-            return;
-        }
-        
-        for (int i = 0; i < productosBajos.size(); i++) {
-            Producto p = productosBajos.get(i);
-            
-            Object[] fila = {
-                p.getId(),
-                p.getNombre(),
-                p.getMarca(),
-                p.getPrecio(),
-                p.getStock()
-            };
-            
-            modelo.addRow(fila);
-        }
-        
+
+    Producto[] productosBajos = inventario.obtenerProductosStockBajo(limite);
+
+    modelo.setRowCount(0);
+
+    if (productosBajos.length == 0) {
         javax.swing.JOptionPane.showMessageDialog(this,
-                "Se muestran productos con stock menor o igual a " + limite + ".");
+            "No hay productos con stock bajo.");
+        mostrarProductos();
+        return;
+}
+
+    for (int i = 0; i < productosBajos.length; i++) {
+    Producto p = productosBajos[i];
+
+    Object[] fila = {
+        p.getId(),
+        p.getNombre(),
+        p.getMarca(),
+        p.getPrecio(),
+        p.getStock()
+    };
+
+    modelo.addRow(fila);
+}
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+        "Se muestran productos con stock menor o igual a " + limite + ".");
     }//GEN-LAST:event_btnStockBajoActionPerformed
     
     

@@ -7,7 +7,7 @@ public class VentanaVentas extends javax.swing.JFrame {
     ArregloProductos inventario = DatosSistema.inventario;
     ArregloClientes clientes = DatosSistema.clientes;
     ArregloVentas ventas = DatosSistema.ventas;
-    PïlaHistorial historial = DatosSistema.historial;
+    PilaHistorial historial = DatosSistema.historial;
     
     DefaultTableModel modeloDetalle;
     
@@ -369,7 +369,7 @@ public class VentanaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarProductoVenta1ActionPerformed
 
     private void btnFinalizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarVentaActionPerformed
-        if (ventaActual == null || ventaActual.getDetalles().isEmpty()) {
+        if (ventaActual == null || !ventaActual.tieneDetalles()) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "No hay productos agregados a la venta.");
             return;
@@ -382,15 +382,14 @@ public class VentanaVentas extends javax.swing.JFrame {
                 "Confirmar venta",
                 javax.swing.JOptionPane.YES_NO_OPTION);
         
-        if(confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+        for (int i = 0; i < ventaActual.cantidadDetalles(); i++) {
             
-            for (int i = 0; i < ventaActual.getDetalles().size(); i++){
-                
-            DetalleVenta detalle = ventaActual.getDetalles().get(i);
-            
+            DetalleVenta detalle = ventaActual.obtenerDetalle(i);
+
             Producto producto = detalle.getProducto();
-            int nuevoStock = producto.getStock() - detalle.getCantidad();
             
+        int nuevoStock = producto.getStock() - detalle.getCantidad();
+
             producto.setStock(nuevoStock);
         }
         
@@ -406,7 +405,7 @@ public class VentanaVentas extends javax.swing.JFrame {
 
          nuevaVenta();
     }//GEN-LAST:event_btnFinalizarVentaActionPerformed
-}
+
     private void btnNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentaActionPerformed
     nuevaVenta();
     }//GEN-LAST:event_btnNuevaVentaActionPerformed

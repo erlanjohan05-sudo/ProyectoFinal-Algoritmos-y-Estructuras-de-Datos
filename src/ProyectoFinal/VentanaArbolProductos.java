@@ -1,8 +1,6 @@
 
 package ProyectoFinal;
 
-import java.util.ArrayList;
-
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaArbolProductos extends javax.swing.JFrame {
@@ -189,7 +187,7 @@ public class VentanaArbolProductos extends javax.swing.JFrame {
             return;
         }
         
-        ArrayList<Producto> lista = arbol.recorridoInOrden();
+        Producto[] lista = arbol.recorridoInOrden();
         mostrarListaProductos(lista);
         
         javax.swing.JOptionPane.showMessageDialog(this,
@@ -200,24 +198,24 @@ public class VentanaArbolProductos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalirArbolActionPerformed
 
-    
-    private void mostrarListaProductos(ArrayList<Producto> lista) {
-        modeloArbol.setRowCount(0);
-        
-        for (int i = 0; i < lista.size(); i++){
-            Producto p = lista.get(i);
-            
-            Object[] fila = {
-                p.getId(),
-                p.getNombre(),
-                p.getMarca(),
-                p.getPrecio(),
-                p.getStock(),
-            };
-            
-            modeloArbol.addRow(fila);
-        }
+    private void mostrarListaProductos(Producto[] lista) {
+    modeloArbol.setRowCount(0);
+
+    for (int i = 0; i < lista.length; i++) {
+        Producto p = lista[i];
+
+        Object[] fila = {
+            p.getId(),
+            p.getNombre(),
+            p.getMarca(),
+            p.getPrecio(),
+            p.getStock()
+        };
+
+        modeloArbol.addRow(fila);
     }
+}
+   
     /**
      * @param args the command line arguments
      */

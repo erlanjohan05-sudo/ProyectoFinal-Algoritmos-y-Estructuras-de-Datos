@@ -1,46 +1,83 @@
-
 package ProyectoFinal;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class ColaClientes {
-    
-    private Queue<Cliente> cola;
-    
-    public ColaClientes(){
-        cola = new LinkedList<>();
+
+    private Cliente[] cola;
+    private int frente;
+    private int fin;
+    private int contador;
+
+    public ColaClientes() {
+        cola = new Cliente[50];
+        frente = 0;
+        fin = 0;
+        contador = 0;
     }
-    
+
     public void encolar(Cliente cliente) {
-        cola.add(cliente);
+        if (contador == cola.length) {
+            aumentarCapacidad();
+        }
+
+        cola[fin] = cliente;
+        fin++;
+        contador++;
     }
-    
+
     public Cliente desencolar() {
         if (estaVacia()) {
             return null;
         }
-        
-        return cola.poll();
+
+        Cliente cliente = cola[frente];
+
+        for (int i = 0; i < contador - 1; i++) {
+            cola[i] = cola[i + 1];
+        }
+
+        cola[contador - 1] = null;
+        contador--;
+        frente = 0;
+        fin = contador;
+
+        return cliente;
     }
-    
+
     public Cliente verPrimero() {
         if (estaVacia()) {
             return null;
         }
-        
-        return cola.peek();
+
+        return cola[frente];
     }
-    
+
     public boolean estaVacia() {
-        return cola.isEmpty();
+        return contador == 0;
     }
-    
-    public int tamaño(){
-        return cola.size();
+
+    public int tamaño() {
+        return contador;
     }
-    
+
     public Cliente[] obtenerClientes() {
-        return cola.toArray(new Cliente[0]);
+        Cliente[] resultado = new Cliente[contador];
+
+        for (int i = 0; i < contador; i++) {
+            resultado[i] = cola[i];
+        }
+
+        return resultado;
+    }
+
+    private void aumentarCapacidad() {
+        Cliente[] nuevaCola = new Cliente[cola.length * 2];
+
+        for (int i = 0; i < contador; i++) {
+            nuevaCola[i] = cola[i];
+        }
+
+        cola = nuevaCola;
+        frente = 0;
+        fin = contador;
     }
 }

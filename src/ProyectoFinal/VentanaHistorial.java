@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaHistorial extends javax.swing.JFrame {
     
-    PïlaHistorial historial = DatosSistema.historial;
+    PilaHistorial historial = DatosSistema.historial;
     DefaultTableModel modeloHistorial;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaHistorial.class.getName());
